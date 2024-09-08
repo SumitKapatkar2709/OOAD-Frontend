@@ -1,0 +1,30 @@
+<div class="welcome-page">
+    <div class="header">
+      <nav class="menu">
+        <ul>
+          <li  (mouseenter)="showLoginOptions = true" (mouseleave)="showLoginOptions = false">
+            <div class="signin-box">
+            Sign In
+            <ul *ngIf="showLoginOptions" class="dropdown">
+              <li><a [routerLink]="['/student-dashboard']">Student Login</a></li>
+              <li><a [routerLink]="['/doctor-dashboard']">Doctor Login</a></li>
+              <li><a [routerLink]="['/admin-dashboard']">Admin Login</a></li>
+            </ul>
+        </div>
+          </li>
+          <li><a href="#">Sign Up</a></li>
+        </ul>
+      </nav>
+    </div>
+  
+    <div class="welcome-content">
+      <h1>Bridging Health and Convenience for Bitsians with...</h1>
+    </div>
+  
+    <div class="title-content">
+      <h1>BITSCure</h1>
+    </div>
+  
+    <router-outlet></router-outlet>
+  </div>
+  

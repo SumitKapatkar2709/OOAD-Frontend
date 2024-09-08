@@ -1,0 +1,27 @@
+<div class="admin-dashboard">
+    <div class="dashboard-header">
+      <h1>Admin Dashboard</h1>
+    </div>
+    
+    <div class="requests-list">
+      <h2>Doctor Onboarding Requests</h2>
+      <div *ngFor="let request of doctorRequests" class="request-item">
+        <div class="request-details">
+          <p><strong>Name:</strong> {{ request.name }}</p>
+          <p><strong>Specialisation:</strong> {{ request.specialisation }}</p>
+          <p><strong>Age:</strong> {{ request.age }}</p>
+          <p><strong>Address:</strong> {{ request.address }}</p>
+          <p><strong>Phone:</strong> {{ request.phone }}</p>
+        </div>
+        <div class="action-buttons">
+            <button class="accept-button" (click)="acceptRequest(request.id)">
+              <i class="fas fa-check"></i> Accept
+            </button>
+            <button class="reject-button" (click)="rejectRequest(request.id)">
+              <i class="fas fa-times"></i> Reject
+            </button>
+          </div>          
+      </div>
+    </div>
+  </div>
+  
