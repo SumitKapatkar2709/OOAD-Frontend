@@ -1,0 +1,23 @@
+<div class="profile-container">
+    <h2>Profile</h2>
+    
+    <div *ngIf="!editMode">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Specialisation:</strong> {{ user.specialisation }}</p>
+      <p><strong>Age:</strong> {{ user.age }}</p>
+      <p><strong>Address:</strong> {{ user.address }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <button (click)="toggleEditMode()">Edit</button>
+    </div>
+  
+    <div *ngIf="editMode">
+      <input type="text" [(ngModel)]="user.name" placeholder="Name" required>
+      <input type="text" [(ngModel)]="user.specialisation" placeholder="Specialisation" required>
+      <input type="number" [(ngModel)]="user.age" placeholder="Age" required>
+      <input type="text" [(ngModel)]="user.address" placeholder="Address" required>
+      <input type="text" [(ngModel)]="user.phone" placeholder="Phone" required>
+      <input type="email" [(ngModel)]="user.email" placeholder="Email" required>
+      <button (click)="saveProfile()">Save</button>
+    </div>
+  </div>

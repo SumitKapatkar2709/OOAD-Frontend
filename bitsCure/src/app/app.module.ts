@@ -7,6 +7,11 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AppointmentConfirmationComponent } from './appointment-confirmation/appointment-confirmation.component';
+import { RegistrationComponentComponent } from './registration-component/registration-component.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,12 +19,17 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     StudentDashboardComponent,
     WelcomeComponent,
     DoctorDashboardComponent,
-    AdminDashboardComponent  // Declare the new component
+    AdminDashboardComponent,
+    AdminLoginComponent,
+    ProfileComponent,
+    AppointmentConfirmationComponent,
+    RegistrationComponentComponent  // Declare the new component
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,  // Include the router module
-    FormsModule
+   BrowserModule,
+   FormsModule,
+  RouterModule,
+  AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

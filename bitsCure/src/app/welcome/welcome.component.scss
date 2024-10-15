@@ -1,246 +1,116 @@
-.welcome-page {
-  background-image: url('/bits_campus_image.jpg');  // Ensure this path is correct
-  background-size: cover;
+/* Main Welcome Container */
+.welcome-container {
+  background-image: url('https://webapp.bits-pilani.ac.in/storage/uploads/2022/1661845462-630dbfd66554b.jpg'); /* Full background */
+  background-size: cover; /* Cover the entire container */
   background-position: center;
-  height: 100vh;
+  height: 100vh; /* Full height of the viewport */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  color: #fff;
+  padding: 20px;
+}
 
-  .header {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* Content Box */
+.welcome-content {
+  background-color: rgba(255, 255, 255, 0.9); /* White box with some transparency */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
 
-    .menu {
-      ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
+h1 {
+  color: #2c3e50; /* Darker text color */
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
 
-        li {
-          margin-left: 20px;
-          position: relative;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px;
+}
 
-          a {.welcome-page {
-            background-image: url('/bits_campus_image.jpg');  // Ensure this path is correct
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            color: #fff;
-          
-            .header {
-              position: absolute;
-              top: 20px;
-              right: 20px;
-          
-              .menu {
-                ul {
-                  list-style: none;
-                  padding: 0;
-                  display: flex;
-          
-                  li {
-                    margin-left: 20px;
-                    position: relative;
-          
-                    .signin-box {
-                      background-color: rgba(0, 0, 0, 0.6);  // Dark semi-transparent background
-                      border: 2px solid #fff;
-                      border-radius: 8px;
-                      padding: 10px 20px;
-                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-                      display: inline-block;
-                      position: relative;
-                      cursor: pointer;
-                      transition: background-color 0.3s ease, transform 0.3s ease;
-                      color: #fff;
-                      font-size: 18px;
-                      text-align: center;
-          
-                      &:hover {
-                        background-color: rgba(255, 255, 255, 0.3);
-                        transform: scale(1.05);
-                      }
-          
-                      .dropdown {
-                        display: none;
-                        position: absolute;
-                        top: 100%;
-                        left: 0;
-                        background-color: rgba(255, 255, 255, 0.9);
-                        border-radius: 8px;
-                        padding: 0;
-                        z-index: 1000;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          
-                        li {
-                          list-style: none;
-                          padding: 10px;
-                          white-space: nowrap;
-          
-                          a {
-                            color: #333;
-                            text-decoration: none;
-                            display: block;
-                            padding: 10px;
-                            transition: background-color 0.3s ease;
-          
-                            &:hover {
-                              background-color: #eee;
-                            }
-                          }
-                        }
-                      }
-                    }
-          
-                    li:hover .signin-box .dropdown {
-                      display: block;
-                    }
-                  }
-          
-                  li {
-                    margin-left: 20px;
-          
-                    a {
-                      text-decoration: none;
-                      color: #fff;
-                      font-size: 18px;
-                      padding: 10px 15px;
-                      border: 2px solid #fff;
-                      border-radius: 5px;
-                      transition: background-color 0.3s ease, transform 0.3s ease;
-                      font-weight: bold;
-          
-                      &:hover {
-                        background-color: rgba(255, 255, 255, 0.3);
-                        transform: scale(1.05);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          
-            .welcome-content {
-              position: absolute;
-              top: 50px;
-              text-align: center;
-          
-              h1 {
-                font-size: 25px;
-                font-family: Arial, Helvetica, sans-serif;
-                margin: 0;
-                text-shadow: 2px 2px 8px rgba(12, 11, 11, 0.7);
-                color: #151414;
-                letter-spacing: 1px;
-              }
-            }
-          
-            .title-content {
-              position: absolute;
-              top: 100px;  // Adjusted for better vertical spacing
-              text-align: center;
-          
-              h1 {
-                font-size: 100px;
-                border-width: thick;
-                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                color: rgb(229, 229, 185);
-                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-                letter-spacing: 5px;
-              }
-            }
-          }
-          
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: 2px solid #070000;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            font-weight: bold;
+.nav-button {
+  background-color: #2980b9; /* Blue button */
+  color: white; /* White text */
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  width: 100%;
+  text-align: center;
+}
 
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.3);
-              transform: scale(1.05);
-            }
-          }
+.nav-button:hover {
+  background-color: #1a5276; /* Darker blue on hover */
+  transform: translateY(-3px); /* Slight lift */
+}
 
-          .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 5px;
-            padding: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Modal Common Styles */
+.admin-password-modal, .doctor-password-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark background overlay */
+}
 
-            li {
-              list-style: none;
-              padding: 10px;
-              white-space: nowrap;
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5); /* Deep shadow */
+  text-align: center;
+}
 
-              a {
-                color: #333;
-                text-decoration: none;
-                display: block;
-                padding: 10px;
-                transition: background-color 0.3s ease;
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
 
-                &:hover {
-                  background-color: #eee;
-                }
-              }
-            }
-          }
-        }
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
 
-        li:hover .dropdown {
-          display: block;
-        }
-      }
-    }
-  }
+.modal-content button {
+  padding: 10px 20px;
+  background-color: #27ae60; /* Green button for submit */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px; /* Space between buttons */
+}
 
-  .welcome-content {
-    position: absolute;
-    top: 50px;
-    text-align: center;
+.modal-content button:hover {
+  background-color: #229954;
+}
 
-    h1 {
-      font-size: 25px;
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      text-shadow: 2px 2px 8px rgba(12, 11, 11, 0.7);
-      color: #151414;
-      letter-spacing: 1px;
-    }
-  }
+.modal-content button.cancel {
+  background-color: #e74c3c; /* Red for cancel button */
+}
 
-  .title-content {
-    position: absolute;
-    top: 100px;  // Adjusted for better vertical spacing
-    text-align: center;
-
-    h1 {
-      font-size: 100px;
-      border-width: thick;
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      color: rgb(229, 229, 185);
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-      letter-spacing: 5px;
-    }
-  }
+.modal-content button.cancel:hover {
+  background-color: #c0392b;
 }

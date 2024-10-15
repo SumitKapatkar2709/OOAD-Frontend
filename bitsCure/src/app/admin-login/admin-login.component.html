@@ -1,0 +1,22 @@
+<div class="admin-login-container">
+    <h2>Admin Login</h2>
+    <form (ngSubmit)="onSubmit()" #adminLoginForm="ngForm">
+      <div class="form-group">
+        <label for="admin-password">Enter Admin Password:</label>
+        <input
+          type="password"
+          id="admin-password"
+          placeholder="Enter admin password"
+          [(ngModel)]="adminPassword"
+          name="adminPassword"
+          required
+        />
+      </div>
+  
+      <div *ngIf="loginError" class="error-message">
+        {{ loginError }}
+      </div>
+  
+      <button type="submit" [disabled]="!adminLoginForm.form.valid">Login</button>
+    </form>
+  </div>

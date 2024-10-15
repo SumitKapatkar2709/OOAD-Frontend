@@ -1,0 +1,6 @@
+<div *ngIf="appointment" class="confirmation-container">
+    <h3>Appointment Confirmed!</h3>
+    <p><strong>Doctor:</strong> {{ appointment.doctor.name }}</p>
+    <p><strong>Date:</strong> {{ appointment.date }}</p>
+    <p><strong>Time:</strong> {{ appointment.time }}</p>
+  </div>

@@ -8,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class StudentDashboardComponent implements OnInit {
   selectedTab = 'book';
   
-  // Specializations list
   specializations = ['Cardio', 'Opthalmo', 'Dermatology', 'Neurology'];
-
-  // Doctors based on specialization
+  
   doctors = [
     { name: 'Dr. Smith', specialization: 'Cardio', experience: 15, address: '123 Heart Lane', phone: '123-456-7890' },
     { name: 'Dr. Jane', specialization: 'Opthalmo', experience: 10, address: '456 Eye Street', phone: '987-654-3210' },
@@ -29,20 +27,17 @@ export class StudentDashboardComponent implements OnInit {
   availableTimeSlots = ['10:00 AM - 11:00 AM', '11:00 AM - 12:00 PM', '01:00 PM - 02:00 PM'];
 
   confirmedAppointment: any = null;
-  
-  // Step 1: Filter doctors based on specialization
+
   onSpecializationChange() {
     this.filteredDoctors = this.doctors.filter(doctor => doctor.specialization === this.selectedSpecialization);
     this.selectedDoctor = '';
     this.selectedDoctorDetails = null;
   }
 
-  // Step 2: Fetch doctor details
   onDoctorSelect() {
     this.selectedDoctorDetails = this.doctors.find(doctor => doctor.name === this.selectedDoctor);
   }
 
-  // Step 5: Confirm booking
   confirmBooking() {
     this.confirmedAppointment = {
       doctor: this.selectedDoctorDetails,
@@ -51,11 +46,10 @@ export class StudentDashboardComponent implements OnInit {
     };
   }
 
-  // Step 6: Compute current date for minDate
   minDate: string = '';
 
   ngOnInit() {
     const today = new Date();
-    this.minDate = today.toISOString().split('T')[0];  // Format as yyyy-MM-dd
+    this.minDate = today.toISOString().split('T')[0]; // Format as yyyy-MM-dd
   }
 }

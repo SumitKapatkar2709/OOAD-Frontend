@@ -1,88 +1,53 @@
-<div class="student-dashboard">
-    <header>
-      <h1>Welcome, [Student Name]</h1>
-    </header>
-  
-    <div class="dashboard-container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <ul>
-          <li (click)="selectedTab = 'book'" [class.active]="selectedTab === 'book'">
-            Book New Appointment
-          </li>
-          <li (click)="selectedTab = 'history'" [class.active]="selectedTab === 'history'">
-            Past Appointment History
-          </li>
-        </ul>
-      </aside>
-  
-      <!-- Main content area -->
-      <section class="main-content">
-        <div [ngSwitch]="selectedTab">
-          <!-- Book Appointment Section -->
-          <div *ngSwitchCase="'book'">
-            <h2>Book a New Appointment</h2>
-  
-            <!-- Step 1: Select Specialization -->
-            <div class="form-group">
-              <label for="specialization">Select Specialization:</label>
-              <select id="specialization" [(ngModel)]="selectedSpecialization" (change)="onSpecializationChange()">
-                <option *ngFor="let specialization of specializations" [value]="specialization">
-                  {{ specialization }}
-                </option>
-              </select>
-            </div>
-  
-            <!-- Step 2: Select Doctor -->
-            <div *ngIf="filteredDoctors.length > 0" class="form-group">
-              <label for="doctor">Select Doctor:</label>
-              <select id="doctor" [(ngModel)]="selectedDoctor" (change)="onDoctorSelect()">
-                <option *ngFor="let doctor of filteredDoctors" [value]="doctor.name">
-                  {{ doctor.name }}
-                </option>
-              </select>
-            </div>
-  
-            <!-- Step 3: Display Doctor Details -->
-            <div *ngIf="selectedDoctorDetails" class="doctor-details">
-              <h3>Doctor Details</h3>
-              <p><strong>Name:</strong> {{ selectedDoctorDetails.name }}</p>
-              <p><strong>Experience:</strong> {{ selectedDoctorDetails.experience }} years</p>
-              <p><strong>Address:</strong> {{ selectedDoctorDetails.address }}</p>
-              <p><strong>Phone:</strong> {{ selectedDoctorDetails.phone }}</p>
-            </div>
-  
-            <!-- Step 4: Date and Time Slot -->
-            <div *ngIf="selectedDoctorDetails" class="form-group">
-                <label for="date">Select Appointment Date:</label>
-                <input id="date" type="date" [(ngModel)]="appointmentDate" [min]="minDate" />
-              
-                <label for="time">Select Time Slot:</label>
-                <select id="time" [(ngModel)]="appointmentTime">
-                  <option *ngFor="let time of availableTimeSlots" [value]="time">{{ time }}</option>
-                </select>
-              </div>
-  
-            <!-- Step 5: Confirm Appointment -->
-            <button *ngIf="appointmentDate && appointmentTime" (click)="confirmBooking()">Confirm Booking</button>
-  
-            <!-- Step 6: Confirmation Page -->
-            <div *ngIf="confirmedAppointment">
-              <h3>Booking Confirmed!</h3>
-              <p>Your appointment with Dr. {{ confirmedAppointment.doctor.name }} is confirmed for {{ confirmedAppointment.date }} at {{ confirmedAppointment.time }}.</p>
-            </div>
-          </div>
-  
-          <!-- Past Appointment History -->
-          <div *ngSwitchCase="'history'">
-            <h2>Past Appointment History</h2>
-            <ul>
-              <li>Appointment with Dr. Smith on 2024-09-01</li>
-              <li>Appointment with Dr. Jane on 2024-08-15</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Student Dashboard</h1>
+    <p>Select a specialization, choose a doctor, and book your appointment.</p>
+  </header>
+
+  <section class="specialization-section">
+    <label for="specialization-select">Select Specialization:</label>
+    <select [(ngModel)]="selectedSpecialization" (change)="onSpecializationChange()" id="specialization-select">
+      <option *ngFor="let specialization of specializations" [value]="specialization">
+        {{ specialization }}
+      </option>
+    </select>
+  </section>
+
+  <section *ngIf="filteredDoctors.length > 0" class="doctor-selection-section">
+    <label for="doctor-select">Select Doctor:</label>
+    <select [(ngModel)]="selectedDoctor" (change)="onDoctorSelect()" id="doctor-select">
+      <option value="" disabled>Select Doctor</option>
+      <option *ngFor="let doctor of filteredDoctors" [value]="doctor.name">
+        {{ doctor.name }} ({{ doctor.experience }} yrs)
+      </option>
+    </select>
+
+    <div *ngIf="selectedDoctorDetails" class="doctor-details">
+      <h3>{{ selectedDoctorDetails.name }}</h3>
+      <p>Specialization: {{ selectedDoctorDetails.specialization }}</p>
+      <p>Experience: {{ selectedDoctorDetails.experience }} years</p>
+      <p>Address: {{ selectedDoctorDetails.address }}</p>
+      <p>Phone: {{ selectedDoctorDetails.phone }}</p>
     </div>
-  </div>
-  
+  </section>
+
+  <section *ngIf="selectedDoctorDetails" class="appointment-section">
+    <label for="appointment-date">Select Date:</label>
+    <input type="date" id="appointment-date" [(ngModel)]="appointmentDate" [min]="minDate" required />
+
+    <label for="appointment-time">Select Time:</label>
+    <select [(ngModel)]="appointmentTime" id="appointment-time" required>
+      <option *ngFor="let time of availableTimeSlots" [value]="time">{{ time }}</option>
+    </select>
+
+    <button (click)="confirmBooking()" [disabled]="!appointmentDate || !appointmentTime">Confirm Booking</button>
+  </section>
+
+  <section *ngIf="confirmedAppointment" class="confirmation-section">
+    <h2>Appointment Confirmed</h2>
+    <p>You have successfully booked an appointment with <strong>{{ confirmedAppointment.doctor.name }}</strong>.</p>
+    <p>Date: {{ confirmedAppointment.date }}</p>
+    <p>Time: {{ confirmedAppointment.time }}</p>
+  </section>
+</div>
+

@@ -1,3 +1,5 @@
+
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,23 +10,28 @@ import { Component, OnInit } from '@angular/core';
 export class AdminDashboardComponent implements OnInit {
   doctorRequests = [
     { id: 1, name: 'Dr. John Doe', specialisation: 'Cardiology', age: 40, address: '123 Main St', phone: '555-1234' },
-    { id: 2, name: 'Dr. Jane Smith', specialisation: 'Ophthalmology', age: 35, address: '456 Elm St', phone: '555-5678' },
-    // Add more sample data or fetch from an API
+    { id: 2, name: 'Dr. Jane Smith', specialisation: 'Ophthalmology', age: 35, address: '456 Elm St', phone: '555-5678' }
   ];
 
   constructor() { }
 
-  ngOnInit(): void {
-    // Fetch the doctor requests from the server if needed
-  }
+  ngOnInit(): void { }
 
   acceptRequest(id: number): void {
-    // Handle acceptance logic here
-    console.log(`Accepted request with id: ${id}`);
+    const requestIndex = this.doctorRequests.findIndex(request => request.id === id);
+    if (requestIndex !== -1) {
+      console.log(`Accepted request with id: ${id}`);
+      this.doctorRequests.splice(requestIndex, 1); // Remove the request from the list
+    }
   }
 
   rejectRequest(id: number): void {
-    // Handle rejection logic here
-    console.log(`Rejected request with id: ${id}`);
+    const requestIndex = this.doctorRequests.findIndex(request => request.id === id);
+    if (requestIndex !== -1) {
+      console.log(`Rejected request with id: ${id}`);
+      this.doctorRequests.splice(requestIndex, 1); // Remove the request from the list
+    }
   }
 }
+
+

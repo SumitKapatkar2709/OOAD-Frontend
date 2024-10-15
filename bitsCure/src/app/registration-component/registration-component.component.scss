@@ -1,0 +1,91 @@
+.registration-container {
+    max-width: 500px; /* Slightly larger for professional look */
+    margin: auto; /* Center the form */
+    padding: 40px;
+    background-color: #f9f9f9; /* Softer background color */
+    border-radius: 12px; /* Smooth rounded corners */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Larger shadow for depth */
+    font-family: 'Poppins', sans-serif; /* Professional font */
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px; /* More space below heading */
+        color: #333;
+        font-size: 2rem; /* Larger heading */
+    }
+
+    form {
+        display: flex;
+        flex-direction: column; /* Align inputs vertically */
+    }
+
+    input[type="text"], 
+    input[type="number"], 
+    input[type="email"], 
+    input[type="password"], 
+    input[type="file"] {
+        width: 100%; /* Full width */
+        padding: 12px; /* Larger padding */
+        margin-bottom: 20px; /* More space between inputs */
+        border: 1px solid #ddd; /* Lighter border */
+        border-radius: 8px; /* Rounded corners */
+        font-size: 1rem;
+        background-color: #fff; /* White background */
+        transition: border-color 0.3s ease; /* Smooth focus effect */
+    }
+
+    input[type="text"]:focus, 
+    input[type="number"]:focus, 
+    input[type="email"]:focus, 
+    input[type="password"]:focus, 
+    input[type="file"]:focus {
+        border-color: #3498db; /* Focus border color */
+        outline: none; /* Remove default outline */
+    }
+
+    .file-upload-label {
+        display: inline-block;
+        margin-bottom: 5px;
+        color: #555;
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px; /* Larger padding for button */
+        background-color: #3498db; /* Primary color */
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold; /* Bold button text */
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    }
+
+    button:hover {
+        background-color: #2980b9; /* Darker hover color */
+        transform: translateY(-3px); /* Slight lift on hover */
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .registration-container {
+        padding: 20px; /* Smaller padding for mobile */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Smaller heading on mobile */
+    }
+
+    button {
+        padding: 12px; /* Smaller padding for button */
+        font-size: 1rem;
+    }
+}
