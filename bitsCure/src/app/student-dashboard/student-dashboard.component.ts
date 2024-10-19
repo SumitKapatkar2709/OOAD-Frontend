@@ -13,10 +13,10 @@ export class StudentDashboardComponent implements OnInit {
 
   // Doctors based on specialization
   doctors = [
-    { name: 'Dr. Smith', specialization: 'Cardio', experience: 15, address: '123 Heart Lane', phone: '123-456-7890' },
-    { name: 'Dr. Jane', specialization: 'Opthalmo', experience: 10, address: '456 Eye Street', phone: '987-654-3210' },
-    { name: 'Dr. Bob', specialization: 'Cardio', experience: 20, address: '789 Cardiac Blvd', phone: '555-555-5555' },
-    { name: 'Dr. Alice', specialization: 'Dermatology', experience: 8, address: '321 Skin Ave', phone: '111-222-3333' }
+    { name: 'Dr. Raj', specialization: 'Cardio', experience: 15, address: '123 Pilani', phone: '123-456-7890' },
+    { name: 'Dr. Shyam', specialization: 'Opthalmo', experience: 10, address: '456 Pilani Street', phone: '987-654-3210' },
+    { name: 'Dr. Suraj', specialization: 'Cardio', experience: 20, address: '789 Vidyavihar', phone: '555-555-5555' },
+    { name: 'Dr. Arora', specialization: 'Dermatology', experience: 8, address: '321 Pilani Campus', phone: '111-222-3333' }
   ];
 
   selectedSpecialization: string = '';

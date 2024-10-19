@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorDashboardComponent implements OnInit {
   upcomingAppointments = [
-    { id: 1, patientName: 'John Doe', date: '2024-09-10', time: '10:00 AM' },
-    { id: 2, patientName: 'Jane Smith', date: '2024-09-11', time: '11:00 AM' }
+    { id: 1, patientName: 'Mr. Sharma', date: '2024-09-10', time: '10:00 AM' },
+    { id: 2, patientName: 'Mr. Shukla', date: '2024-09-11', time: '11:00 AM' }
   ];
 
   availableSlots = ['09:00 AM - 10:00 AM', '10:00 AM - 11:00 AM', '01:00 PM - 02:00 PM'];
