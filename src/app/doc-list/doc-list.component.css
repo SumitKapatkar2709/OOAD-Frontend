@@ -1,0 +1,8 @@
+.content {
+    height: 75vh;
+    display: grid;
+    grid-template-rows: 75vh auto;
+}
+.my_class{
+    overflow: auto;
+}

@@ -1,15 +1,35 @@
-<div class="my_class"> 
-    <div class="card m-3" *ngFor="let doctor of doctors">
-        <div class="card-body">
-            <h5 class="card-title">{{doctor.name}}</h5>
-            <p class="card-text">{{doctor.specialization}}</p>
-            <div class="mt-auto d-flex justify-content-end">
-                <!-- <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>  -->
-                <a class="btn btn-primary" routerLink="addDoc" routerLinkActive="active">Book => </a>
-                <!-- <a href="#" class="btn btn-warning m-2">Book => </a>
-                <a href="#" class="btn btn-danger m-2">Delete</a>-->
+<div class="content" [ngClass]="{'no-data': !doctors || !doctors.length}">
+    <ng-container *ngIf="doctors && doctors.length; else noDataTemplate">
+        <div class="my_class">
+            <div class="card m-3" *ngFor="let doctor of doctors">
+                <div class="card-body">
+                    
+                        <h5 class="card-title m-0 pb-2">{{doctor.name}}</h5>
+                        <p class="card-text m-0">{{doctor.specialization}}</p>
+                        <p class="card-text m-0">{{doctor.yearsOfExperience}} Years of Experience</p>
+                    
+                    <div class="mt-auto d-flex justify-content-end">
+                        <!-- <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>  -->
+                        <a class="btn btn-primary" routerLink="addDoc" routerLinkActive="active">Book => </a>
+                        <!-- <a href="#" class="btn btn-warning m-2">Book => </a>
+                    <a href="#" class="btn btn-danger m-2">Delete</a>-->
+                    </div>
+
+                </div>
             </div>
-            
         </div>
-    </div>
+    </ng-container>
+    <ng-template #noDataTemplate>
+        <p>No data available</p>
+    </ng-template>
+</div>
+<!--
+<div class="content">
+    <ng-container *ngIf="data && data.length; else noDataTemplate">
+         Your data display logic 
+    </ng-container>
+    <ng-template #noDataTemplate>
+        <p>No data available</p>
+    </ng-template>
 </div> 
+-->

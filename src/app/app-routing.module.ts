@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AddDocComponent } from './add-doc/add-doc.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { EditDocComponent } from './edit-doc/edit-doc.component';
 
 const routes: Routes = [
   {path:"doc-list",component: DocListComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"adminDash",component: AdminDashboardComponent},
   {path:"doc-list/addDoc",component: AddDocComponent},
   {path:"adminDash/addDoc",component: AddDocComponent},
+  {path:"editDoc/:id",component: EditDocComponent},
   {path:'',redirectTo:'home',pathMatch:'full'}
 ];
 

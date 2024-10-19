@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from '../doctor';
 import { DocService } from '../doc.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +12,7 @@ import { DocService } from '../doc.service';
 export class AdminDashboardComponent implements OnInit{
   doctors:Doctor[];
 
-  constructor(private doctorService: DocService) {
+  constructor(private doctorService: DocService, private router: Router) {
 
   }
 
@@ -25,7 +26,16 @@ export class AdminDashboardComponent implements OnInit{
       this.doctors = data;
       console.log(data);
     });
-    
   }
 
+  updateDoctor(id:number){
+    this.router.navigate(['editDoc',id]);
+
+  }
+
+  deleteDoctor(id: number){
+    this.doctorService.deleteDoctor(id).subscribe(data =>{
+      this.router.navigate(['doc-list',id]);
+    })
+  }
 }

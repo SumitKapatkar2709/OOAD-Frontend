@@ -1,9 +1,10 @@
+<p>edit-doc works!</p>
 <div class="registration-container mt-5 mb-5">
-    <h2>Register as Doctor</h2>
+    <h2>Edit Doctor Data</h2>
     <form (ngSubmit)="onSubmit()" #doctorForm="ngForm">
         <input
             type="text"
-            class="form-control"
+            class="form-group"
             [(ngModel)] ="doctor.name"
             id="name"
             name="name"        
@@ -38,20 +39,6 @@
             required
         />
         <input
-            type="text"
-            ngModel
-            name="phone"
-            placeholder="Phone Number"
-            required
-        />
-        <input
-            type="email"
-            ngModel
-            name="email"
-            placeholder="Email"
-            required
-        />
-        <input
             type="number"
             class="form-control"
             [(ngModel)] ="doctor.yearsOfExperience"
@@ -60,13 +47,6 @@
             placeholder="Experience (in years)"
             required
         />
-        <input
-            type="password"
-            ngModel
-            name="password"
-            placeholder="Create Password"
-            required
-        />
-        <button type="submit" [disabled]="!doctorForm.form.valid">Register</button>
+        <button type="submit" [disabled]="!doctorForm.form.valid">Submit</button>
     </form>
 </div>
