@@ -22,7 +22,7 @@
           <ul class="dropdown-menu dropdown-menu-end" >
             <li><a class="dropdown-item" href="#">Student Login</a></li>
             <li><a class="dropdown-item" href="#">Doctor Login</a></li>
-            <li><a class="dropdown-item" href="#">Admin Login</a></li>
+            <li><a class="dropdown-item" routerLink="adminDash" routerLinkActive="active">Admin Login</a></li>
           </ul>
         </li>
       </ul>
@@ -33,10 +33,4 @@
 
 <router-outlet></router-outlet>
 
-
-<footer class="bg-dark py-2">  //can have mt-5
-  <div class="conainer text-light text-center">
-    <p class="display-6">BITSCure</p>
-    <small class="text-white-60" id="subheading"> Made with ❤️ by BITSians </small>
-  </div>
-</footer>
+<app-footer></app-footer>

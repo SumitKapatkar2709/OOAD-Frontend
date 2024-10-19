@@ -1,14 +1,15 @@
-<p>doc-list works!</p>
-
-<div class="card m-5">
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <div class="mt-auto d-flex justify-content-end">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            <a href="#" class="btn btn-primary">Go somewhere2</a>
-            <a href="#" class="btn btn-primary">Go somewhere3</a>
-          </div>
-        
+<div class="my_class"> 
+    <div class="card m-3" *ngFor="let doctor of doctors">
+        <div class="card-body">
+            <h5 class="card-title">{{doctor.name}}</h5>
+            <p class="card-text">{{doctor.specialization}}</p>
+            <div class="mt-auto d-flex justify-content-end">
+                <!-- <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>  -->
+                <a class="btn btn-primary" routerLink="addDoc" routerLinkActive="active">Book => </a>
+                <!-- <a href="#" class="btn btn-warning m-2">Book => </a>
+                <a href="#" class="btn btn-danger m-2">Delete</a>-->
+            </div>
+            
+        </div>
     </div>
-</div>
+</div> 

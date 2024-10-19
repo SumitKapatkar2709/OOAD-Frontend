@@ -1,0 +1,19 @@
+<p>admin-dashboard works!</p>
+
+
+<div class="my_class"> 
+    <div class="card m-3" *ngFor="let doctor of doctors">
+        <div class="card-body">
+            <h5 class="card-title">{{doctor.name}}</h5>
+            <p class="card-text">{{doctor.specialization}}</p>
+            <div class="mt-auto d-flex justify-content-end">
+                <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>
+                <a href="#" class="btn btn-warning m-2">Edit</a>
+                <a href="#" class="btn btn-danger m-2">Delete</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>   

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Doctor} from '../doctor'
-import {DocService} from '../doc.service'
+import { Doctor } from '../doctor';
+import { DocService } from '../doc.service';
 
 @Component({
-  selector: 'app-doc-list',
-  templateUrl: './doc-list.component.html',
-  styleUrl: './doc-list.component.css'
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrl: './admin-dashboard.component.css'
 })
-export class DocListComponent implements OnInit{
 
+export class AdminDashboardComponent implements OnInit{
   doctors:Doctor[];
 
   constructor(private doctorService: DocService) {
