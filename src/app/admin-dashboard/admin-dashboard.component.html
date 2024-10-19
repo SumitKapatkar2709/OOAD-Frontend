@@ -1,24 +1,59 @@
-<div class="content" [ngClass]="{'no-data': !doctors || !doctors.length}">
-    <ng-container *ngIf="doctors && doctors.length; else noDataTemplate">
-        <div class="my_class">
-            <div class="card m-3" *ngFor="let doctor of doctors">
-                <div class="card-body">
-                    <h5 class="card-title m-0 pb-2">{{doctor.name}}</h5>
-                    <p class="card-text m-0">{{doctor.specialization}}</p>
-                    <p class="card-text m-0">{{doctor.yearsOfExperience}} Years of Experience</p>
-                    <div class="mt-auto d-flex justify-content-end">
-                        <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>
-                        <a class="btn btn-warning m-2" (click)="updateDoctor(doctor.doctorId)">Edit</a>
-                        <a class="btn btn-danger m-2" (click)="deleteDoctor(doctor.doctorId)">Delete</a>
+<div class="d-flex flex-row">
+    <!-- Sidebar -->
+    <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
+        (mouseleave)="hoverSidebar(false)">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-envelope"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Request Management</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="toggleDropdown()">
+                    <i class="bi bi-person"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Doctor Management</span>
+                    <i class="bi bi-chevron-down" *ngIf="!isCollapsed"></i>
+                </a>
+                <ul class="nav flex-column ms-3" *ngIf="dropdownOpen && !isCollapsed">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Doctor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Doctors</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content" [ngClass]="{'no-data': !doctors || !doctors.length}">
+        <ng-container *ngIf="doctors && doctors.length; else noDataTemplate">
+            <div class="my_class">
+                <ul class="card_ul">
+                    <div class="card m-3" *ngFor="let doctor of doctors">
+                        <li class="li_card">
+                            <div class="card-body">
+                                <h5 class="card-title m-0 pb-2">{{doctor.name}}</h5>
+                                <p class="card-text m-0">{{doctor.specialization}}</p>
+                                <p class="card-text m-0">{{doctor.yearsOfExperience}} Years of Experience</p>
+                                <div class="mt-auto d-flex justify-content-end">
+                                    <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>
+                                    <a class="btn btn-warning m-2" (click)="updateDoctor(doctor.doctorId)">Edit</a>
+                                    <a class="btn btn-danger m-2" (click)="deleteDoctor(doctor.doctorId)">Delete</a>
+                                </div>
+
+                            </div>
+                        </li>
                     </div>
 
-                </div>
+                </ul>
             </div>
-        </div>
-    </ng-container>
-    <ng-template #noDataTemplate>
-        <p>No data available</p>
-    </ng-template>
+        </ng-container>
+        <ng-template #noDataTemplate>
+            <p>No data available</p>
+        </ng-template>
+    </div>
 </div>
 
 <router-outlet></router-outlet>

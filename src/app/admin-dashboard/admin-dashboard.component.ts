@@ -10,6 +10,20 @@ import { Route, Router } from '@angular/router';
 })
 
 export class AdminDashboardComponent implements OnInit{
+
+  isCollapsed = true;
+  dropdownOpen = false;
+
+  // Toggle collapse on mouse hover
+  hoverSidebar(isHovering: boolean): void {
+    this.isCollapsed = !isHovering;
+  }
+
+  // Toggle the dropdown for Doctor Management
+  toggleDropdown(): void {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
   doctors:Doctor[];
 
   constructor(private doctorService: DocService, private router: Router) {
@@ -35,7 +49,7 @@ export class AdminDashboardComponent implements OnInit{
 
   deleteDoctor(id: number){
     this.doctorService.deleteDoctor(id).subscribe(data =>{
-      this.router.navigate(['doc-list',id]);
+      this.router.navigate(['doc-list']);
     })
   }
 }
