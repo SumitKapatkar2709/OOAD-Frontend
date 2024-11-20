@@ -1,0 +1,180 @@
+<div class="d-flex flex-row">
+    <!-- Sidebar -->
+    <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
+        (mouseleave)="hoverSidebar(false)">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <!-- Make Request Management active by default -->
+                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-envelope"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Request Management</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="toggleDropdown()" [routerLink]="['/adminAddDoctor']" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-person"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Doctor Management</span>
+                    <!-- Toggle icon based on dropdown state -->
+                    <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
+                        *ngIf="!isCollapsed"></i>
+                </a>
+                <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/adminAddDoctor']" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                            
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Add New Doctor</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Edit Doctor Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Doctors</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="page-wrapper"> -->
+        <div class="registration-container">
+            <h2>Doctor Registration</h2>
+            <form (ngSubmit)="onSubmit()" #doctorForm="ngForm">
+                
+                <!-- Full Name -->
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)] ="doctor.name"
+                        name="name"
+                        placeholder="Full Name"
+                        required
+                    />
+                </div>
+        
+                <!-- Specialisation -->
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)] ="doctor.specialization"
+                        name="specialisation"
+                        placeholder="Specialisation"
+                        required
+                    />
+                </div>
+        
+                <!-- Age (Numeric Only) -->
+                <div class="mb-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        [(ngModel)] ="doctor.age"
+                        name="age"
+                        placeholder="Age"
+                        required
+                        pattern="\d*"
+                        title="Please enter a valid number"
+                    />
+                </div>
+        
+                <!-- Years of Experience (Numeric Only) -->
+                <div class="mb-3">
+                    <input
+                        type="number"
+                        class="form-control"
+                        [(ngModel)] ="doctor.yearsOfExperience"
+                        name="yearsOfExperience"
+                        placeholder="Experience (in years)"
+                        required
+                        pattern="\d*"
+                        title="Please enter a valid number"
+                    />
+                </div>
+        
+                <!-- Address -->
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)] ="doctor.doctorAddress"
+                        name="doctorAddress"
+                        placeholder="Address"
+                        required
+                    />
+                </div>
+        
+                <!-- Holiday -->
+                <div class="mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)] ="doctor.holiday"
+                        name="holiday"
+                        placeholder="Holiday"
+                        required
+                    />
+                </div>
+        
+                <!-- Break Start Time -->
+                <div class="mb-3">
+                    <label for="breakStartTime" class="form-label">Break Start Time</label>
+                    <input
+                        type="time"
+                        class="form-control"
+                        [(ngModel)] ="doctor.breakStartTime"
+                        name="breakStartTime"
+                        required
+                    />
+                </div>
+        
+                <!-- Break End Time -->
+                <div class="mb-3">
+                    <label for="breakEndTime" class="form-label">Break End Time</label>
+                    <input
+                        type="time"
+                        class="form-control"
+                        [(ngModel)] ="doctor.breakEndTime"
+                        name="breakEndTime"
+                        required
+                    />
+                </div>
+        
+                <!-- Duty Start Time -->
+                <div class="mb-3">
+                    <label for="dutyStartTime" class="form-label">Duty Start Time</label>
+                    <input
+                        type="time"
+                        class="form-control"
+                        [(ngModel)] ="doctor.dutyStartTime"
+                        name="dutyStartTime"
+                        required
+                    />
+                </div>
+        
+                <!-- Duty End Time -->
+                <div class="mb-3">
+                    <label for="dutyEndTime" class="form-label">Duty End Time</label>
+                    <input
+                        type="time"
+                        class="form-control"
+                        [(ngModel)] ="doctor.dutyEndTime"
+                        name="dutyEndTime"
+                        required
+                    />
+                </div>
+        
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary" [disabled]="!doctorForm.form.valid">Register</button>
+            </form>
+        </div>
+        
+<!-- </div> -->
+</div>
+
+<router-outlet></router-outlet>

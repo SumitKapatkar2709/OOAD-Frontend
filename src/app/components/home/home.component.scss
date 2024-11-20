@@ -1,0 +1,16 @@
+#image{
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.6)100%,
+        rgba(0, 0, 0, 0) 100%,
+        rgba(0, 0, 0, 0.6) 100%
+        ),url('/bits_campus_image.jpg');  
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

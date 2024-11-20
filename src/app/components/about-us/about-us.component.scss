@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.wrapper {
+    display: flex;
+}
+
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: #0046ad;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    color: white;
+    padding-top: 20px;
+}
+
+#sidebar .sidebar-logo {
+    padding: 0 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#sidebar .sidebar-nav {
+    list-style: none;
+    padding: 20px;
+}
+
+#sidebar .sidebar-nav .sidebar-item {
+    margin-bottom: 10px;
+}
+
+#sidebar .sidebar-nav .sidebar-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar .sidebar-nav .sidebar-link:hover {
+    background-color: #003580;
+}
+
+#sidebar .sidebar-nav .sidebar-link i {
+    margin-right: 10px;
+}
+
+#sidebar .sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#sidebar .sidebar-footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sidebar .sidebar-footer a:hover {
+    background-color: #003580;
+    border-radius: 5px;
+}
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: 200px;
+    }
+
+    .main {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+}
+
+@media (max-width: 576px) {
+    #sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.toggle-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+}
