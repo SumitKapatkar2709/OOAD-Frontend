@@ -34,6 +34,14 @@ export class DoctorService {
     return this.httpClient.delete(`${this.apiUrl}/doctors/${id}`);
   }
 
+  getDoctorById(id: number| undefined):Observable<Doctor>{
+    return this.httpClient.get<Doctor>(`${this.apiUrl}/doctors/${id}`);
+  }
+
+  deleteDoctor(id: number| undefined): Observable<Object>{
+    return this.httpClient.delete(`${this.apiUrl}/doctors/${id}`);
+  }
+
   // deleteDoctor(id: number): Observable<Object>{
   //   return this.httpClient.delete(`${this.baseURL}/${id}`);
   // }

@@ -1,3 +1,5 @@
+<!-- <p>admin-delete-doctor works!</p> -->
+ 
 <div class="d-flex flex-row">
     <!-- Sidebar -->
     <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
@@ -5,25 +7,40 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <!-- Make Request Management active by default -->
-                <a class="nav-link" routerLink="requestManagement" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-envelope"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed">Request Management</span>
                 </a>
+
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="toggleDropdown()">
+                <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()" [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-person"></i>
-                    <span class="sidebar-text" *ngIf="!isCollapsed">Doctor Management</span>
+                    <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Doctor Management</span>
                     <!-- Toggle icon based on dropdown state -->
-                    <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}" *ngIf="!isCollapsed"></i>
+                    <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
+                        *ngIf="!isCollapsed"></i>
                 </a>
-                <ul class="nav flex-column ms-3" *ngIf="dropdownOpen && !isCollapsed">
+                <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Doctor</a>
+                        <a class="nav-link" [routerLink]="['/adminAddDoctor']" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Add New Doctor</span>
+                        </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/adminEditDoctor']" [routerLinkActive]="['active']">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Edit Doctor Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/adminDeleteDoctor']" [routerLinkActive]="['active']">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Delete Doctor Details</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Manage Doctors</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
         </ul>
@@ -40,7 +57,7 @@
                                 <p class="card-text m-0">{{doctor.specialization}}</p>
                                 <p class="card-text m-0">{{doctor.yearsOfExperience}} Years of Experience</p>
                                 <div class="mt-auto d-flex justify-content-end">
-                                    <a class="btn btn-primary m-2" routerLink="addDoc" routerLinkActive="active">Add</a>
+                                    <a class="btn btn-danger m-2" (click)="removeDoctor(doctor.doctorId)" [routerLinkActive]="['active']">Delete Doctor</a>
                                     <!-- <a class="btn btn-warning m-2" (click)="updateDoctor(doctor.doctorId)">Edit</a>
                                     <a class="btn btn-danger m-2" (click)="deleteDoctor(doctor.doctorId)">Delete</a> -->
                                 </div>

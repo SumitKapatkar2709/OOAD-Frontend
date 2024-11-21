@@ -12,6 +12,12 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { provideHttpClient } from '@angular/common/http';
 import { AdminRequestManagementComponent } from './components/admin-request-management/admin-request-management.component';
 import { AdminAddDoctorComponent } from './components/admin-add-doctor/admin-add-doctor.component';
+import { AdminEditDoctorComponent } from './components/admin-edit-doctor/admin-edit-doctor.component';
+import { AdminDeleteDoctorComponent } from './components/admin-delete-doctor/admin-delete-doctor.component';
+import { AdminEditMainDoctorComponent } from './components/admin-edit-main-doctor/admin-edit-main-doctor.component';
+import { StudentBookAppointmentComponent } from './components/student-book-appointment/student-book-appointment.component';
+import { StudentPastAppointmentComponent } from './components/student-past-appointment/student-past-appointment.component';
+import { StudentLoginComponent } from './components/student-login/student-login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { AdminAddDoctorComponent } from './components/admin-add-doctor/admin-add
     DoctorRegistrationComponent,
     AdminDashboardComponent,
     AdminRequestManagementComponent,
-    AdminAddDoctorComponent
+    AdminAddDoctorComponent,
+    AdminEditDoctorComponent,
+    AdminDeleteDoctorComponent,
+    AdminEditMainDoctorComponent,
+    StudentBookAppointmentComponent,
+    StudentPastAppointmentComponent,
+    StudentLoginComponent
   ],
   imports: [
     BrowserModule,

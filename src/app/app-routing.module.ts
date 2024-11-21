@@ -7,6 +7,9 @@ import { DoctorRegistrationComponent } from './components/doctor-registration/do
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminRequestManagementComponent } from './components/admin-request-management/admin-request-management.component';
 import { AdminAddDoctorComponent } from './components/admin-add-doctor/admin-add-doctor.component';
+import { AdminEditDoctorComponent } from './components/admin-edit-doctor/admin-edit-doctor.component';
+import { AdminDeleteDoctorComponent } from './components/admin-delete-doctor/admin-delete-doctor.component';
+import { AdminEditMainDoctorComponent } from './components/admin-edit-main-doctor/admin-edit-main-doctor.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -16,7 +19,10 @@ const routes: Routes = [
   {path:"doctorRegistration",component: DoctorRegistrationComponent},
   {path:"adminDashboard",component: AdminDashboardComponent},
   {path:"adminRequestManagement",component: AdminRequestManagementComponent},
-  {path:"adminAddDoctor",component: AdminAddDoctorComponent}
+  {path:"adminAddDoctor",component: AdminAddDoctorComponent},
+  {path:"adminEditDoctor",component: AdminEditDoctorComponent},
+  {path:"adminDeleteDoctor",component: AdminDeleteDoctorComponent},
+  {path:"adminEditMainDoctor/:id",component: AdminEditMainDoctorComponent}
 ];
 
 @NgModule({

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Doctor } from '../../models/doctor';
 import { DoctorService } from '../../services/doctor.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-add-doctor',
-  templateUrl: './admin-add-doctor.component.html',
-  styleUrl: './admin-add-doctor.component.scss'
+  selector: 'app-admin-edit-main-doctor',
+  templateUrl: './admin-edit-main-doctor.component.html',
+  styleUrl: './admin-edit-main-doctor.component.scss'
 })
-export class AdminAddDoctorComponent implements OnInit{
-   
+export class AdminEditMainDoctorComponent implements OnInit {
+
   isCollapsed = true;
   dropdownOpen = false;
 
@@ -26,17 +26,42 @@ export class AdminAddDoctorComponent implements OnInit{
 
   // Check if the current route is 'adminAddDoctor'
   isActiveRoute(): boolean {
-    return this.router.url === '/adminAddDoctor';
+    // return this.router.url === '/adminEditMainDoctor/';
+    return this.router.url.startsWith('/adminEditMainDoctor');
   }
 
   doctor: Doctor = new Doctor();
+  id: number | undefined = undefined;
   // Initialize with a default time value (e.g., 12:00 PM)
   breakStartTime: string = '12:00';  // Use a time string format 'HH:mm'
-  constructor(private doctorService : DoctorService,private router:Router){ }
+  constructor(private doctorService: DoctorService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // this.id=this.router.snapshot.params['id'];//this.router.snapshot.params['id'];
+    // this.doctorService.getDoctorById(this.id).subscribe(data => {
+    //   this.doctor=data;
+    // },
+    // error => console.log(error));
+
+    // Accessing route parameters using snapshot from ActivatedRoute
+    const idParam = this.activatedRoute.snapshot.params['id'];
+
+    // Check if idParam is a valid number or undefined
+    if (idParam !== undefined && !isNaN(Number(idParam))) {
+      this.id = Number(idParam); // Assign the number if valid
+    } else {
+      this.id = undefined; // Set to undefined if invalid
+    }
+
+    console.log('Route ID:', this.id);
+    this.doctorService.getDoctorById(this.id).subscribe(data => {
+      this.doctor=data;
+    },
+    error => console.log(error));
+  }
 
   saveDoctor() {
+    console.log("doctor...",this.doctor);
     this.doctorService.createDoctor(this.doctor)
       .pipe(
         tap(data => {
@@ -49,7 +74,7 @@ export class AdminAddDoctorComponent implements OnInit{
       });
   }
 
-  goToDocList(){
+  goToDocList() {
     this.router.navigate(['/doc-list'])  //constructor parameter for router is necessary
   }
 
@@ -60,14 +85,14 @@ export class AdminAddDoctorComponent implements OnInit{
       this.saveDoctor();
       console.log('Doctor registered:', this.doctor);
       alert('Doctor Added Successfully!!!');
-      
+
     } else {
       console.log('Form is not valid');
       alert('Form is not valid so Registration Unsuccessfull');
     }
   }
 
- 
+
   private isFormValid(): boolean {
     console
     return (
@@ -83,24 +108,5 @@ export class AdminAddDoctorComponent implements OnInit{
       this.doctor.dutyEndTime !== null
     );
   }
-
-  // doctors: Doctor[] = [];
-  // doctor: Doctor = new Doctor();
-
-  // constructor(private doctorService: DoctorService, private router: Router) {
-
-  // }
-
-  // ngOnInit(): void {
-  //   this.getUnverifeidDoctors();
-      
-  // }
-
-  // private getUnverifeidDoctors(){
-  //   this.doctorService.getUnverifiedDoctorList().subscribe(data => {
-  //     this.doctors = data;
-  //     console.log(data);
-  //   });
-  // }
 
 }

@@ -1,6 +1,6 @@
 export class Doctor {
     doctorId?: number;
-    name: string;
+    doctorName: string;
     age: number;
     specialization: string;
     yearsOfExperience: number;
@@ -14,7 +14,7 @@ export class Doctor {
 
     constructor(
       doctorId: number | undefined = undefined, // Optional with default value
-      name: string = '', // Default empty string
+      doctorName: string = '', // Default empty string
       age: number = 0, // Default value 0
       specialization: string = '',
       yearsOfExperience: number = 0,
@@ -27,7 +27,7 @@ export class Doctor {
       isVerified: boolean = false
     ) {
       this.doctorId = doctorId;
-      this.name = name;
+      this.doctorName = doctorName;
       this.age = age;
       this.specialization = specialization;
       this.yearsOfExperience = yearsOfExperience;

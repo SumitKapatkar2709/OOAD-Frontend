@@ -1,16 +1,16 @@
-.content {
-    height: 75vh;
-    display: grid;
-    grid-template-rows: 75vh auto;
-    width: 100%;
-}
+// .content {
+//     height: 75vh;
+//     display: grid;
+//     grid-template-rows: 75vh auto;
+//     width: 100%;
+// }
 
 /* Content should grow to fill available space */
-// .content {
-//     flex: 1;  /* This allows content to take up remaining space */
-//     overflow-y: auto; /* Ensure scroll if content overflows */
-//     width: 100%;
-//   }
+.content {
+    flex: 1;  /* This allows content to take up remaining space */
+    overflow-y: auto; /* Ensure scroll if content overflows */
+    width: 100%;
+  }
   
   /* Content section should grow to fill available space */
 //   .content {
@@ -72,6 +72,7 @@
 .sidebar .sidebar-text {
     transition: opacity 0.2s ease;
 }
+
 
 .main-content {
     flex-grow: 1;

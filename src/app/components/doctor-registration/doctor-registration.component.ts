@@ -75,7 +75,7 @@ export class DoctorRegistrationComponent implements OnInit{
   private isFormValid(): boolean {
     console
     return (
-      this.doctor.name.trim() !== '' &&
+      this.doctor.doctorName.trim() !== '' &&
       this.doctor.specialization.trim() !== '' &&
       this.doctor.age !== null &&
       this.doctor.yearsOfExperience !== null &&
