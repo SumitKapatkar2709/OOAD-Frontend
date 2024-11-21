@@ -1,5 +1,4 @@
-<!-- <p>admin-edit-doctor works!</p> -->
-  
+<!-- <p>student-dashboard works!</p> -->
 <div class="d-flex flex-row">
     <!-- Sidebar -->
     <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
@@ -7,26 +6,33 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <!-- Make Request Management active by default -->
-                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                <a class="nav-link" [routerLink]="['/studentBADashboard']" [routerLinkActive]="['active']"
                     [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-envelope"></i>
-                    <span class="sidebar-text" *ngIf="!isCollapsed">Request Management</span>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Book Appointment</span>
                 </a>
 
             </li>
             <li class="nav-item">
-                <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()" [ngClass]="{'active': isActiveRoute()}">
+                <!-- Make Request Management active by default -->
+                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-envelope"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Past Appointments</span>
+                </a>
+
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()">
                     <i class="bi bi-person"></i>
-                    <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Doctor Management</span>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Doctor Management</span> -->
                     <!-- Toggle icon based on dropdown state -->
-                    <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
+                    <!-- <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
                         *ngIf="!isCollapsed"></i>
                 </a>
-                <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
+                <ul class="nav flex-column ms-3" *ngIf="dropdownOpen && !isCollapsed">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/adminAddDoctor']" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
-                            <span class="sidebar-text" *ngIf="!isCollapsed">Add New Doctor</span>
-                        </a>
+                        <a class="nav-link" [routerLink]="['/adminAddDoctor']" [routerLinkActive]="['active']">Add New Doctor</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/adminEditDoctor']" [routerLinkActive]="['active']">
@@ -37,15 +43,15 @@
                         <a class="nav-link" [routerLink]="['/adminDeleteDoctor']" [routerLinkActive]="['active']">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Delete Doctor Details</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Manage Doctors</a>
                     </li> -->
-                </ul>
-            </li>
+                <!-- </ul>
+            </li> -->
         </ul>
     </div>
-
+    <!-- <div class="page-wrapper"> -->
     <div class="content" [ngClass]="{'no-data': !doctors || !doctors.length}">
         <ng-container *ngIf="doctors && doctors.length; else noDataTemplate">
             <div class="my_class">
@@ -57,7 +63,8 @@
                                 <p class="card-text m-0">{{doctor.specialization}}</p>
                                 <p class="card-text m-0">{{doctor.yearsOfExperience}} Years of Experience</p>
                                 <div class="mt-auto d-flex justify-content-end">
-                                    <a class="btn btn-primary m-2" (click)="editDoctor(doctor.doctorId)" [routerLinkActive]="['active']">Edit Details</a>
+                                    <a class="btn btn-primary m-2" (click)="moveToBA(doctor.doctorId)">Book Appointment => </a>
+                                    <!-- <a class="btn btn-danger m-2" (click)="removeDoctor(doctor.doctorId)">Reject</a> -->
                                     <!-- <a class="btn btn-warning m-2" (click)="updateDoctor(doctor.doctorId)">Edit</a>
                                     <a class="btn btn-danger m-2" (click)="deleteDoctor(doctor.doctorId)">Delete</a> -->
                                 </div>
@@ -72,6 +79,7 @@
             <p>No data available</p>
         </ng-template>
     </div>
+<!-- </div> -->
 </div>
 
 <router-outlet></router-outlet>

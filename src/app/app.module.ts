@@ -18,6 +18,13 @@ import { AdminEditMainDoctorComponent } from './components/admin-edit-main-docto
 import { StudentBookAppointmentComponent } from './components/student-book-appointment/student-book-appointment.component';
 import { StudentPastAppointmentComponent } from './components/student-past-appointment/student-past-appointment.component';
 import { StudentLoginComponent } from './components/student-login/student-login.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { StudentDashboardComponent } from './components/student-dashboard/student-dashboard.component';
+import { DoctorTodayAppointmentsComponent } from './components/doctor-today-appointments/doctor-today-appointments.component';
+import { DoctorAddPatientDetailsComponent } from './components/doctor-add-patient-details/doctor-add-patient-details.component';
+import { DoctorEditPatientDetailsComponent } from './components/doctor-edit-patient-details/doctor-edit-patient-details.component';
+import { DoctorDeletePatientDetailsComponent } from './components/doctor-delete-patient-details/doctor-delete-patient-details.component';
+import { DoctorAddDiagnosticDetailsComponent } from './components/doctor-add-diagnostic-details/doctor-add-diagnostic-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +41,14 @@ import { StudentLoginComponent } from './components/student-login/student-login.
     AdminEditMainDoctorComponent,
     StudentBookAppointmentComponent,
     StudentPastAppointmentComponent,
-    StudentLoginComponent
+    StudentLoginComponent,
+    AdminLoginComponent,
+    StudentDashboardComponent,
+    DoctorTodayAppointmentsComponent,
+    DoctorAddPatientDetailsComponent,
+    DoctorEditPatientDetailsComponent,
+    DoctorDeletePatientDetailsComponent,
+    DoctorAddDiagnosticDetailsComponent
   ],
   imports: [
     BrowserModule,

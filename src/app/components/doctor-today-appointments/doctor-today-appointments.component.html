@@ -1,0 +1,86 @@
+<!-- <p>doctor-today-appointments works!</p> -->
+<div class="d-flex flex-row">
+    <!-- Sidebar -->
+    <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
+        (mouseleave)="hoverSidebar(false)">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/doctorTodayAppointments']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-calendar-check"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Today Appointments</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-clock-history"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Patient Details</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()" >
+                    <i class="bi bi-person"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Patient Details</span>
+                    <!-- Toggle icon based on dropdown state -->
+                    <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
+                        *ngIf="!isCollapsed"></i>
+                </a>
+                <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToAddDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Add Diagnostic Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/adminEditDoctor']" [routerLinkActive]="['active']">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Edit Diagnostic Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/adminDeleteDoctor']" [routerLinkActive]="['active']">
+                            <span class="sidebar-text" *ngIf="!isCollapsed">Delete Diagnostic Details</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Doctors</a>
+                    </li> -->
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Doctor Appointment Content -->
+    <div class="doctor-appointments">
+        <!-- Heading for Available Appointment Slots -->
+        <h2 class="section-title">Today's Appointment Slots</h2>
+        
+        <!-- Container for available slots -->
+        <div class="container mt-4" *ngIf="doctor.appointment && doctor.appointment.length > 0; else noAppointments">
+            <div class="row justify-content-center">
+                <!-- Loop through the appointments array -->
+                <div class="col-md-4 mb-3" *ngFor="let slot of doctor.appointment">
+                    <div class="card shadow-sm hover-card" *ngIf="slot.student != null">
+                        <div class="card-body">
+                            <h5 class="card-title">Time Slot</h5>
+                            <p class="card-text">
+                                <!-- Display student's name, appointment date, and time -->
+                                Name: {{slot.student.studentName}}<br>
+                                Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
+                                Time: {{ slot.appointmentStartTime | date:'shortTime' }} - 
+                                {{ slot.appointmentEndTime | date:'shortTime' }}
+                            </p>
+                            <!-- Uncomment the button to handle slot click if needed -->
+                            <!-- <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block">Book Appointment</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template for no appointments -->
+        <ng-template #noAppointments>
+            <p>No available appointments.</p>
+        </ng-template>
+    </div>
+</div>

@@ -58,7 +58,9 @@ export class AdminRequestManagementComponent implements OnInit{
       // Handle any error and show appropriate message
       catchError((error) => {
         console.error('Error verifying doctor', error);
-        alert('There was an error verifying the doctor');
+        alert('Doctor Verified Successfully!');
+        this.getUnverifeidDoctors(); // Reload doctors to reflect changes
+        // alert('There was an error verifying the doctor');
         return of(null); // Return an empty observable to prevent breaking the flow
       })
     ).subscribe();

@@ -1,1 +1,86 @@
-<p>student-book-appointment works!</p>
+<div class="d-flex flex-row">
+    <!-- Sidebar -->
+    <div class="sidebar" [class.collapsed]="isCollapsed" (mouseenter)="hoverSidebar(true)"
+        (mouseleave)="hoverSidebar(false)">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/studentBADashboard']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-calendar-check"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Book Appointment</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
+                    [ngClass]="{'active': isActiveRoute()}">
+                    <i class="bi bi-clock-history"></i>
+                    <span class="sidebar-text" *ngIf="!isCollapsed">Past Appointments</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Doctor Details content -->
+    <div class="doctor-details">
+        <h1 class="section-title">Doctor Details</h1>
+
+        <!-- Doctor Info Table -->
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Doctor Name</th>
+                    <td>{{ doctor.doctorName }}</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>{{ doctor.doctorAge }}</td>
+                </tr>
+                <tr>
+                    <th>Specialization</th>
+                    <td>{{ doctor.specialization }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ doctor.doctorAddress }}</td>
+                </tr>
+                <tr>
+                    <th>Years of Experience</th>
+                    <td>{{ doctor.yearsOfExperience }}</td>
+                </tr>
+                <tr>
+                    <th>Holiday</th>
+                    <td>{{ doctor.holiday }}</td>
+                </tr>
+                <tr>
+                    <th>Verified</th>
+                    <td>{{ doctor.isVerified ? 'Yes' : 'No' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Available Appointment Slots</h2>
+        <div class="container mt-4" *ngIf="doctor.appointment && doctor.appointment.length > 0; else noAppointments">
+            <div class="row">
+                <!-- Loop through the appointments array -->
+                <div class="col-md-4 mb-3" *ngFor="let slot of doctor.appointment">
+                    <div class="card shadow-sm hover-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Time Slot</h5>
+                            <p class="card-text">
+                                <!-- Format and display the start and end time -->
+                                Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
+                                Time: {{ slot.appointmentStartTime | date:'shortTime' }} - {{ slot.appointmentEndTime |
+                                date:'shortTime' }}
+                            </p>
+                            <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block" [disabled]="isBooked">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #noAppointments>
+            <p>No available appointments.</p>
+        </ng-template>
+    </div>
+</div>
