@@ -18,6 +18,8 @@ import { DoctorTodayAppointmentsComponent } from './components/doctor-today-appo
 import { DoctorAddPatientDetailsComponent } from './components/doctor-add-patient-details/doctor-add-patient-details.component';
 import { DoctorAddDiagnosticDetailsComponent } from './components/doctor-add-diagnostic-details/doctor-add-diagnostic-details.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { DoctorEditDiagnosticDetailsComponent } from './components/doctor-edit-diagnostic-details/doctor-edit-diagnostic-details.component';
+import { DoctorEditPatientDetailsComponent } from './components/doctor-edit-patient-details/doctor-edit-patient-details.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
@@ -38,7 +40,9 @@ const routes: Routes = [
   {path:"studentPastAppointment/:studentId",component: StudentPastAppointmentComponent},
   {path:"doctorTodayAppointments/:id",component: DoctorTodayAppointmentsComponent},
   {path:"doctorAddPatientDetails/:doctorId/:appointmentId",component: DoctorAddPatientDetailsComponent},
-  {path:"doctorAddDiagnosticDetails/:doctorId",component: DoctorAddDiagnosticDetailsComponent}
+  {path:"doctorAddDiagnosticDetails/:doctorId",component: DoctorAddDiagnosticDetailsComponent},
+  {path:"doctorEditDiagnosticDetails/:doctorId",component: DoctorEditDiagnosticDetailsComponent},
+  {path:"doctorEditPatientDetails/:doctorId/:appointmentId",component: DoctorEditPatientDetailsComponent},
 ];
 
 @NgModule({

@@ -25,6 +25,7 @@ import { DoctorAddPatientDetailsComponent } from './components/doctor-add-patien
 import { DoctorEditPatientDetailsComponent } from './components/doctor-edit-patient-details/doctor-edit-patient-details.component';
 import { DoctorDeletePatientDetailsComponent } from './components/doctor-delete-patient-details/doctor-delete-patient-details.component';
 import { DoctorAddDiagnosticDetailsComponent } from './components/doctor-add-diagnostic-details/doctor-add-diagnostic-details.component';
+import { DoctorEditDiagnosticDetailsComponent } from './components/doctor-edit-diagnostic-details/doctor-edit-diagnostic-details.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DoctorAddDiagnosticDetailsComponent } from './components/doctor-add-dia
     DoctorAddPatientDetailsComponent,
     DoctorEditPatientDetailsComponent,
     DoctorDeletePatientDetailsComponent,
-    DoctorAddDiagnosticDetailsComponent
+    DoctorAddDiagnosticDetailsComponent,
+    DoctorEditDiagnosticDetailsComponent
   ],
   imports: [
     BrowserModule,

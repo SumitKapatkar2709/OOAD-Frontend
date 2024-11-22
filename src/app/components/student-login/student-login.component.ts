@@ -24,6 +24,9 @@ export class StudentLoginComponent {
     // Initialize the students array with the two student objects
     this.students.push(this.student1);
     this.students.push(this.student2);
+    this.students.push(this.student3);
+    this.students.push(this.student4);
+    this.students.push(this.student5);
   }
 
   onLogin() {

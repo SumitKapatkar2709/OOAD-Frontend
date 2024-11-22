@@ -1,3 +1,4 @@
+<!-- <p>doctor-edit-diagnostic-details works!</p> -->
 <!-- <p>doctor-add-diagnostic-details works!</p> -->
 
 <div class="d-flex flex-row">
@@ -29,12 +30,12 @@
                 </a>
                 <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" (click)="moveToAddDiagnosticDetails()" [ngClass]="{'active': isActiveRoute()}">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToAddDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Add Diagnostic Details</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" (click)="moveToEditDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToEditDiagnosticDetails()"  [ngClass]="{'active': isActiveRoute()}">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Edit Diagnostic Details</span>
                         </a>
                     </li>
@@ -72,7 +73,7 @@
                                 {{ slot.appointmentEndTime | date:'shortTime' }}
                             </p>
                             <!-- Uncomment the button to handle slot click if needed -->
-                            <button (click)="onAddDetailsClick(slot.appointmentId)" class="btn btn-primary btn-block">Add Patient Details</button>
+                            <button (click)="onEditDetailsClick(slot.appointmentId)" class="btn btn-primary btn-block">Edit Patient Details</button>
                             <!-- <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block">Book Appointment</button> -->
                         </div>
                     </div>

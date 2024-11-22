@@ -28,7 +28,7 @@ export class DoctorAddPatientDetailsComponent implements OnInit{
   // Check if the current route is 'adminAddDoctor'
   isActiveRoute(): boolean {
     // return this.router.url === '/adminEditMainDoctor/';
-    return this.router.url.startsWith('/adminEditMainDoctor');
+    return this.router.url.startsWith('/doctorAddPatientDetails');
   }
 
   patientDetail: PatientDetails = new PatientDetails();
@@ -67,6 +67,7 @@ export class DoctorAddPatientDetailsComponent implements OnInit{
   }
 
   saveDetails() {
+    alert('Data Added Successfully!!');
     this.appointmentService.addPatientDetails(this.patientDetail,this.appointmentId)
       .pipe(
         tap(data => {
@@ -101,6 +102,14 @@ export class DoctorAddPatientDetailsComponent implements OnInit{
   moveToAddDiagnosticDetails(){
     console.log(this.doctorId);
     this.router.navigate(['/doctorAddDiagnosticDetails',this.doctorId]);
+  }
+  moveToEditDiagnosticDetails(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorEditDiagnosticDetails',this.doctorId]);
+  }
+  moveToTodaysAppointments(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorTodayAppointments',this.doctorId]);
   }
  
   // private isFormValid(): boolean {

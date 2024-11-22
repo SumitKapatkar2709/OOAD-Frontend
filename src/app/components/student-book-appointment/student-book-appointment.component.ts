@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ADoctor, Appointment, Student } from '../../models/appointment-student';
 import { AppointmentService } from '../../services/appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,10 +31,14 @@ export class StudentBookAppointmentComponent implements OnInit {
   doctor: ADoctor = new ADoctor();
   studentId: number | undefined;
   doctorId: number | undefined;
-  isBooked: boolean = false;
+  // isBooked: boolean = false;
+  // Flag to determine whether all buttons should be disabled
+  disableAllButtons: boolean = false;
+
+  availableAppointments: any[] = [];
   // Initialize with a default time value (e.g., 12:00 PM)
   breakStartTime: string = '12:00';  // Use a time string format 'HH:mm'
-  constructor(private adoctorService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private adoctorService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     // Retrieve studentId and doctorId from the URL
@@ -45,10 +49,49 @@ export class StudentBookAppointmentComponent implements OnInit {
 
     // console.log('Route ID:', this.doctorId);
     this.adoctorService.getDoctorById(this.doctorId).subscribe(data => {
-      this.doctor=data;
+      this.doctor = data;
     },
-    error => console.log(error));
+      error => console.log(error));
+
+    this.sortAppointments();
+    this.filterAvailableAppointments();
   }
+
+  filterAvailableAppointments() {
+
+
+    // Filter out only available appointments
+    this.availableAppointments = this.doctor.appointment.filter(slot => slot.available);
+
+    // Check if any appointment already has the currentStudentId assigned
+    this.disableAllButtons = this.doctor.appointment.some(
+      slot => slot.student?.studentId === this.studentId
+    );
+
+    // this.availableAppointments = this.doctor.appointment.filter(slot => slot.available || slot.student.studentId !== this.studentId);
+    // console.log(slot.student.studentId)
+    console.log('Available appointments:', this.availableAppointments);  // Debugging output
+  }
+
+  sortAppointments() {
+    if (this.doctor.appointment && this.doctor.appointment.length > 0) {
+      // Sort by the start time, ensuring the appointments are in ascending order.
+      this.doctor.appointment.sort((a, b) => {
+        const aTime = new Date(a.appointmentStartTime).getTime();
+        const bTime = new Date(b.appointmentStartTime).getTime();
+        // console.log(`Comparing ${a.appointmentStartTime} and ${b.appointmentStartTime}`); // Debugging output
+        return aTime - bTime;
+      });
+      // console.log('Sorted Appointments:', this.doctor.appointment); // Check the sorted result
+    }
+  }
+
+  // sortAppointments() {
+  //   if (this.doctor.appointment && this.doctor.appointment.length > 0) {
+  //     // Sorting by the start time
+  //     this.doctor.appointment.sort((a, b) => new Date(a.appointmentStartTime).getTime() - new Date(b.appointmentStartTime).getTime());
+  //   }
+  // }
 
   onSlotClick(appointmentId: number | undefined): void {
     try {
@@ -56,8 +99,12 @@ export class StudentBookAppointmentComponent implements OnInit {
         .assignStudentToAppointment(appointmentId, this.studentId)
         .subscribe({
           next: (response) => {
-            this.isBooked = true;
-            this.ngOnInit();
+            this.disableAllButtons = true;
+            // this.ngOnInit();
+            // Reload the entire page
+            window.location.reload();
+            // Trigger change detection to update the view
+            this.cdr.detectChanges();
             console.log(response); // Success message
             alert(response); // Optionally show a message to the user
           },

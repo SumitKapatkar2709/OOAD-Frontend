@@ -45,6 +45,7 @@ export class DoctorAddDiagnosticDetailsComponent implements OnInit{
       this.doctor=data;
     },
     error => console.log(error));
+    this.sortAppointments();
   }
 
   onAddDetailsClick(appointmentId:number|undefined,){
@@ -55,6 +56,28 @@ export class DoctorAddDiagnosticDetailsComponent implements OnInit{
   moveToAddDiagnosticDetails(){
     console.log(this.doctorId);
     this.router.navigate(['/doctorAddDiagnosticDetails',this.doctorId]);
+  }
+
+  moveToEditDiagnosticDetails(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorEditDiagnosticDetails',this.doctorId]);
+  }
+  moveToTodaysAppointments(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorTodayAppointments',this.doctorId]);
+  }
+
+  sortAppointments() {
+    if (this.doctor.appointment && this.doctor.appointment.length > 0) {
+      // Sort by the start time, ensuring the appointments are in ascending order.
+      this.doctor.appointment.sort((a, b) => {
+        const aTime = new Date(a.appointmentStartTime).getTime();
+        const bTime = new Date(b.appointmentStartTime).getTime();
+        // console.log(`Comparing ${a.appointmentStartTime} and ${b.appointmentStartTime}`); // Debugging output
+        return aTime - bTime;
+      });
+      // console.log('Sorted Appointments:', this.doctor.appointment); // Check the sorted result
+    }
   }
 
 }

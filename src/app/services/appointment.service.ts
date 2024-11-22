@@ -57,7 +57,11 @@ export class AppointmentService {
   // }
 
   addPatientDetails(patientDetails: PatientDetails,appointmentId: number | undefined):Observable<Object>{
-    return this.httpClient.post(`${this.apiUrl}/appointments/${appointmentId}`,patientDetails);
+    return this.httpClient.put(`${this.apiUrl}/appointments/${appointmentId}`,patientDetails);
+  }
+
+  getPatientDetailsById(appointmentId: number| undefined):Observable<PatientDetails>{
+    return this.httpClient.get<PatientDetails>(`${this.apiUrl}/appointments/${appointmentId}`);
   }
 
 }

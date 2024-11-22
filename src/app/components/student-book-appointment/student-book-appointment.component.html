@@ -59,25 +59,33 @@
         </table>
 
         <h2 class="section-title">Available Appointment Slots</h2>
-        <div class="container mt-4" *ngIf="doctor.appointment && doctor.appointment.length > 0; else noAppointments">
+        <div class="container mt-4" *ngIf="availableAppointments && availableAppointments.length > 0; else noAppointments">
             <div class="row">
-                <!-- Loop through the appointments array -->
-                <div class="col-md-4 mb-3" *ngFor="let slot of doctor.appointment">
-                    <div class="card shadow-sm hover-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Time Slot</h5>
-                            <p class="card-text">
-                                <!-- Format and display the start and end time -->
-                                Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
-                                Time: {{ slot.appointmentStartTime | date:'shortTime' }} - {{ slot.appointmentEndTime |
-                                date:'shortTime' }}
-                            </p>
-                            <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block" [disabled]="isBooked">Book Appointment</button>
-                        </div>
-                    </div>
+              <!-- Loop through the availableAppointments array -->
+              <div class="col-md-4 mb-3" *ngFor="let slot of availableAppointments">
+                <div class="card shadow-sm hover-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Time Slot</h5>
+                    <p class="card-text">
+                      <!-- Format and display the start and end time -->
+                      Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
+                      Time: {{ slot.appointmentStartTime | date:'shortTime' }} - {{ slot.appointmentEndTime | date:'shortTime' }}
+                    </p>
+                     <!-- Debugging Output -->
+          <p>Student: {{ slot.student | json }}</p>
+          <p>Student ID ({{ slot.student?.studentId }}), Current Student ID: {{ studentId }}</p>
+                    <button
+                      (click)="onSlotClick(slot.appointmentId)"
+                      class="btn btn-primary btn-block"
+                      [disabled]="disableAllButtons || slot.student !== null || slot.student?.studentId === studentId">
+                      Book Appointment
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
+        
 
         <ng-template #noAppointments>
             <p>No available appointments.</p>

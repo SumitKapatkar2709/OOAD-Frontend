@@ -7,22 +7,22 @@
         (mouseleave)="hoverSidebar(false)">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/doctorTodayAppointments']" [routerLinkActive]="['active']"
+                <a class="nav-link"  href="javascript:void(0);" (click)="moveToTodaysAppointments()" [routerLinkActive]="['active']"
                     [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-calendar-check"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed">Today Appointments</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
                     [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-clock-history"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed">Patient Details</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()" [ngClass]="{'active': isActiveRoute()}">
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-clock-history"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Patient Details</span>
                     <!-- Toggle icon based on dropdown state -->
                     <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
@@ -30,20 +30,20 @@
                 </a>
                 <ul class="nav flex-column" *ngIf="dropdownOpen && !isCollapsed">
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);" (click)="moveToAddDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToAddDiagnosticDetails()" [ngClass]="{'active': isActiveRoute()}">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Add Diagnostic Details</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/adminEditDoctor']" [routerLinkActive]="['active']">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToEditDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Edit Diagnostic Details</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/adminDeleteDoctor']" [routerLinkActive]="['active']">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Delete Diagnostic Details</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Manage Doctors</a>
                     </li> -->
@@ -96,7 +96,7 @@
                 </div>
         
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary" [disabled]="!doctorForm.form.valid">Register</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!doctorForm.form.valid">Add Details</button>
             </form>
         </div>
         

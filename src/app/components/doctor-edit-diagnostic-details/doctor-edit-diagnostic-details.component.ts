@@ -4,11 +4,11 @@ import { AppointmentService } from '../../services/appointment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-doctor-today-appointments',
-  templateUrl: './doctor-today-appointments.component.html',
-  styleUrl: './doctor-today-appointments.component.scss'
+  selector: 'app-doctor-edit-diagnostic-details',
+  templateUrl: './doctor-edit-diagnostic-details.component.html',
+  styleUrl: './doctor-edit-diagnostic-details.component.scss'
 })
-export class DoctorTodayAppointmentsComponent implements OnInit{
+export class DoctorEditDiagnosticDetailsComponent implements OnInit {
 
   isCollapsed = true;
   dropdownOpen = false;
@@ -26,26 +26,46 @@ export class DoctorTodayAppointmentsComponent implements OnInit{
   // Check if the current route is 'adminAddDoctor'
   isActiveRoute(): boolean {
     // return this.router.url === '/adminEditMainDoctor/';
-    return this.router.url.startsWith('/doctorTodayAppointments');
+    return this.router.url.startsWith('/doctorEditDiagnosticDetails');
   }
 
   doctor: ADoctor = new ADoctor();
-  id: number | undefined;
+  doctorId: number | undefined;
 
   constructor(private adoctorService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     // Retrieve studentId and doctorId from the URL
     this.activatedRoute.params.subscribe(params => {
-      this.id = +params['id'];    // Convert to number
+      this.doctorId = +params['doctorId'];    // Convert to number
     });
 
-    // console.log('Route ID:', this.doctorId);
-    this.adoctorService.getDoctorById(this.id).subscribe(data => {
+    console.log('Route ID:', this.doctorId);
+    this.adoctorService.getDoctorById(this.doctorId).subscribe(data => {
       this.doctor=data;
     },
     error => console.log(error));
     this.sortAppointments();
+  }
+
+  onEditDetailsClick(appointmentId:number|undefined,){
+    // console.log('Route ID in function:', this.doctorId);
+    this.router.navigate(['/doctorEditPatientDetails',this.doctorId,appointmentId]);
+  }
+
+  moveToAddDiagnosticDetails(){
+    console.log(this.doctorId);
+    this.router.navigate(['/doctorAddDiagnosticDetails',this.doctorId]);
+  }
+
+  moveToEditDiagnosticDetails(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorEditDiagnosticDetails',this.doctorId]);
+  }
+
+  moveToTodaysAppointments(){
+    // console.log(this.id);
+    this.router.navigate(['/doctorTodayAppointments',this.doctorId]);
   }
 
   sortAppointments() {
@@ -60,25 +80,5 @@ export class DoctorTodayAppointmentsComponent implements OnInit{
       // console.log('Sorted Appointments:', this.doctor.appointment); // Check the sorted result
     }
   }
-
-  moveToAddDiagnosticDetails(){
-    console.log(this.id);
-    this.router.navigate(['/doctorAddDiagnosticDetails',this.id]);
-  }
-
-  moveToEditDiagnosticDetails(){
-    console.log(this.id);
-    this.router.navigate(['/doctorEditDiagnosticDetails',this.id]);
-  }
-
-  // moveToBA(doctorId: number | undefined) {
-  //   if (this.studentId !== undefined) {
-  //     // Proceed with navigation
-  //     this.router.navigate(['studentBookAppointment', this.studentId, doctorId]);
-  //   } else {
-  //     // Handle the case when studentId is undefined, maybe show a message
-  //     console.error('Student ID is undefined');
-  //   }
-  // }
 
 }

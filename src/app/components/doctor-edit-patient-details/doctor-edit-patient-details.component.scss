@@ -1,0 +1,198 @@
+.content {
+    height: 75vh;
+    display: grid;
+    grid-template-rows: 75vh auto;
+    width: 100%;
+}
+
+/* Content should grow to fill available space */
+// .content {
+//     flex: 1;  /* This allows content to take up remaining space */
+//     overflow-y: auto; /* Ensure scroll if content overflows */
+//     width: 100%;
+//   }
+  
+  /* Content section should grow to fill available space */
+//   .content {
+//     flex: 1; /* This allows content to take up remaining space */
+//     overflow-y: auto; /* Ensure scroll if content overflows */
+//     width: 100%;
+//     padding-bottom: 50px; /* Optional: add space for footer if needed */
+//   }
+
+  /* Page wrapper takes full height */
+// .page-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     height: 80vh;
+//     flex: 1;  /* This allows content to take up remaining space */
+//     overflow-y: auto; /* Ensure scroll if content overflows */
+//     width: 100%;
+//   }
+
+.my_class {
+    overflow: auto;
+}
+
+/* sidebar.component.css */
+.sidebar {
+    width: 300px;
+    background-color: #343a40;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #495057;
+}
+
+.sidebar i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.sidebar.collapsed i {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar .sidebar-text {
+    transition: opacity 0.2s ease;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+ul.nav.flex-column {
+    list-style-type: none;
+}
+
+/* General link styles */
+ul.nav.flex-column a {
+    color: #adb5bd;
+}
+
+ul.nav.flex-column a:hover {
+    color: #ffffff;
+}
+
+/* Active link styles with higher specificity */
+ul.nav.flex-column .nav-link.active {
+    background-color: #007bff; /* Active background color */
+    color: white !important; /* Ensure this overrides the default color */
+}
+
+ul.nav.flex-column .nav-link.active:hover{
+    background-color: #02478d; /* Active background color */
+    color: white; /* Ensure this overrides the default color */
+}
+
+/* Active link icon color */
+ul.nav.flex-column .nav-link.active i {
+    color: white !important; /* Ensure icon color is white */
+}
+
+/* Other styles */
+.li_card {
+    list-style: none;
+}
+
+.card_ul {
+    padding: 0;
+}
+
+//for registration container
+.registration-container {
+    max-width: 500px; 
+    margin: auto; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 40px; 
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Ensuring that the container doesn't stretch beyond 100% width */
+    width: 100%;
+}
+
+/* Media query for devices with screen width less than or equal to 768px (e.g., tablets) */
+@media (max-width: 768px) {
+    .registration-container {
+        padding: 30px;  /* Reduce padding for smaller screens */
+        margin-top: 30px; /* Decrease top margin */
+        margin-bottom: 30px; /* Decrease bottom margin */
+    }
+}
+
+/* Media query for devices with screen width less than or equal to 576px (e.g., mobile phones) */
+@media (max-width: 576px) {
+    .registration-container {
+        max-width: 80%; /* Allow the container to take full width on small screens */
+        padding: 20px;  /* Reduce padding further for very small screens */
+        margin-top: 20px; /* Reduce top margin */
+        margin-bottom: 20px; /* Reduce bottom margin */
+    }
+}
+//here till registration container to make it responsive
+
+
+h2 {
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: #2c3e50; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+
+input {
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+    transition: border-color 0.3s; 
+}
+
+
+input:focus {
+    border-color: #3498db; 
+    outline: none; 
+}
+
+
+button {
+    width: 100%; 
+    padding: 12px; 
+    background-color: #3498db; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 23px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+button:hover {
+    background-color: #2980b9; 
+}
+
+button:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}

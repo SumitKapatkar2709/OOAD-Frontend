@@ -11,16 +11,16 @@
                     <span class="sidebar-text" *ngIf="!isCollapsed">Today Appointments</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/adminRequestManagement']" [routerLinkActive]="['active']"
                     [ngClass]="{'active': isActiveRoute()}">
                     <i class="bi bi-clock-history"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed">Patient Details</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link"  href="javascript:void(0);" (click)="toggleDropdown()" >
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-clock-history"></i>
                     <span class="sidebar-text" *ngIf="!isCollapsed" style="margin-right: 10px;">Patient Details</span>
                     <!-- Toggle icon based on dropdown state -->
                     <i class="bi" [ngClass]="{'bi-chevron-down': !dropdownOpen, 'bi-chevron-up': dropdownOpen}"
@@ -33,15 +33,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/adminEditDoctor']" [routerLinkActive]="['active']">
+                        <a class="nav-link" href="javascript:void(0);" (click)="moveToEditDiagnosticDetails()" [routerLinkActive]="['active']" [ngClass]="{'active': isActiveRoute()}">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Edit Diagnostic Details</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/adminDeleteDoctor']" [routerLinkActive]="['active']">
                             <span class="sidebar-text" *ngIf="!isCollapsed">Delete Diagnostic Details</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Manage Doctors</a>
                     </li> -->
