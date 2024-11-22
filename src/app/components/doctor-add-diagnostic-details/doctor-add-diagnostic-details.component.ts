@@ -31,6 +31,7 @@ export class DoctorAddDiagnosticDetailsComponent implements OnInit{
 
   doctor: ADoctor = new ADoctor();
   doctorId: number | undefined;
+  availableAppointments: any[] = [];
 
   constructor(private adoctorService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -66,6 +67,17 @@ export class DoctorAddDiagnosticDetailsComponent implements OnInit{
     // console.log(this.id);
     this.router.navigate(['/doctorTodayAppointments',this.doctorId]);
   }
+
+  // sortAppointments() {
+  //   if (this.doctor.appointment && this.doctor.appointment.length > 0) {
+  //     // Create a new sorted array instead of mutating the original array
+  //     this.availableAppointments = [...this.doctor.appointment].sort((a, b) => {
+  //       const aTime = new Date(a.appointmentStartTime).getTime();
+  //       const bTime = new Date(b.appointmentStartTime).getTime();
+  //       return aTime - bTime;
+  //     });
+  //   }
+  // }
 
   sortAppointments() {
     if (this.doctor.appointment && this.doctor.appointment.length > 0) {

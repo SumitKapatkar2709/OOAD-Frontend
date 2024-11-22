@@ -27,7 +27,7 @@ export class DoctorService {
   }
 
   acceptDoctor(id: number | undefined):Observable<Object>{
-    return this.httpClient.get(`${this.apiUrl}/doctors/verify/${id}`);
+    return this.httpClient.put(`${this.apiUrl}/doctors/verify/${id}`,id);
   }
 
   rejectDoctor(id: number | undefined):Observable<Object>{

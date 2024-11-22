@@ -60,24 +60,26 @@
         <!-- Container for available slots -->
         <div class="container mt-4" *ngIf="doctor.appointment && doctor.appointment.length > 0; else noAppointments">
             <div class="row justify-content-center">
-                <!-- Loop through the appointments array -->
-                <div class="col-md-4 mb-3" *ngFor="let slot of doctor.appointment">
-                    <div class="card shadow-sm hover-card" *ngIf="slot.student != null">
-                        <div class="card-body">
-                            <h5 class="card-title">Time Slot</h5>
-                            <p class="card-text">
-                                <!-- Display student's name, appointment date, and time -->
-                                Name: {{slot.student.studentName}}<br>
-                                Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
-                                Time: {{ slot.appointmentStartTime | date:'shortTime' }} - 
-                                {{ slot.appointmentEndTime | date:'shortTime' }}
-                            </p>
-                            <!-- Uncomment the button to handle slot click if needed -->
-                            <button (click)="onEditDetailsClick(slot.appointmentId)" class="btn btn-primary btn-block">Edit Patient Details</button>
-                            <!-- <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block">Book Appointment</button> -->
+                <!-- Loop through the appointments array and check if student is not null -->
+                <ng-container *ngFor="let slot of doctor.appointment">
+                    <div class="col-md-4 mb-3" *ngIf="slot.student != null">
+                        <div class="card shadow-sm hover-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Time Slot</h5>
+                                <p class="card-text">
+                                    <!-- Display student's name, appointment date, and time -->
+                                    Name: {{slot.student.studentName}}<br>
+                                    Date: {{ slot.appointmentStartTime | date:'shortDate' }} <br>
+                                    Time: {{ slot.appointmentStartTime | date:'shortTime' }} -
+                                    {{ slot.appointmentEndTime | date:'shortTime' }}
+                                </p>
+                                <!-- Uncomment the button to handle slot click if needed -->
+                                <button (click)="onEditDetailsClick(slot.appointmentId)" class="btn btn-primary btn-block">Edit Patient Details</button>
+                                <!-- <button (click)="onSlotClick(slot.appointmentId)" class="btn btn-primary btn-block">Book Appointment</button> -->
+                            </div>
                         </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
 
