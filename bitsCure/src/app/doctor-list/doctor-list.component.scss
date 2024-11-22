@@ -1,0 +1,84 @@
+$primary-color: #4A90E2;  // Primary color (blue)
+$secondary-color: #50E3C2; // Secondary color (teal)
+$background-color: #f9f9f9; // Light background
+$card-background: rgb(229, 229, 185); // Uniform card background color
+$text-color: #333333; // Dark text
+$secondary-text-color: #777777; // Secondary text
+$details-text-color: #555555; // Details text
+$border-color: #ddd; // Border color
+$hover-background: #f0f0f0; // Hover background for doctor list
+$hover-card-shadow: rgba(0, 0, 0, 0.2); // Shadow on hover
+$transition-speed: 0.3s; // Transition speed for animations
+$max-width: 1200px; // Max width for doctor list container
+$card-padding: 20px; // Padding for card content
+
+.doctor-list {
+  max-width: $max-width; // Limit the width of the list
+  margin: 20px auto; // Center the list horizontally
+  padding: 20px;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color $transition-speed ease;
+
+  &:hover {
+    background-color: $hover-background;
+  }
+
+  h2 {
+    text-align: center; // Center the header
+    font-size: 2em; // Increase font size
+    color: $primary-color; // Use primary color
+    margin-bottom: 20px; // Add margin below the header
+  }
+}
+
+.doctor-card {
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  padding: $card-padding; // Use variable for padding
+  margin: 10px 0;
+  background-color: $card-background; // Set uniform background color
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px $hover-card-shadow;
+  }
+
+  .doctor-name {
+    font-size: 1.4em; // Increase font size for the name
+    font-weight: bold;
+    color: $primary-color; // Use primary color for the name
+    margin-bottom: 5px; // Space below the name
+  }
+
+  .doctor-specialization {
+    font-size: 1.1em; // Slightly larger specialization text
+    color: $secondary-text-color; // Use secondary text color
+    margin-bottom: 10px; // Space below specialization
+  }
+
+  .doctor-details {
+    margin-top: 10px;
+    font-size: 0.95em; // Adjust size for details
+    color: $details-text-color; // Use details text color
+
+    p {
+      margin: 5px 0; // Add margin for better spacing
+      line-height: 1.5; // Improve line height for readability
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .doctor-list {
+    padding: 10px; // Reduce padding for smaller screens
+  }
+
+  .doctor-card {
+    padding: 15px; // Reduce padding for cards
+  }
+}

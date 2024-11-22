@@ -1,0 +1,11 @@
+<div class="student-login">
+    <h1>Student Login</h1>
+    <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="studentName">Enter your name:</label>
+        <input type="text" id="studentName" [(ngModel)]="studentName" name="studentName" required />
+      </div>
+      <button type="submit">Proceed to Dashboard</button>
+    </form>
+  </div>
+  

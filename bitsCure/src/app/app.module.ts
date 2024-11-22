@@ -7,6 +7,9 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { StudentLoginComponent } from './student-login/student-login.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 @NgModule({
   declarations: [
@@ -14,14 +17,16 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     StudentDashboardComponent,
     WelcomeComponent,
     DoctorDashboardComponent,
-    AdminDashboardComponent  // Declare the new component
+    AdminDashboardComponent,
+    StudentLoginComponent,
+    DoctorListComponent  // Declare the new component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,  // Include the router module
     FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
