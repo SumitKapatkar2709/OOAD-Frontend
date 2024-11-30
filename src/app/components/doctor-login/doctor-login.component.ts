@@ -13,7 +13,7 @@ export class DoctorLoginComponent {
   doctors: ALDoctor[] = [];
 
   doctor1: ALDoctor = new ALDoctor(1,"sumit@gmail.com");
-  doctor2: ALDoctor = new ALDoctor(2,"hjskdfj@gmail.com");
+  doctor2: ALDoctor = new ALDoctor(2,"naggender@gmail.com");
   doctor3: ALDoctor = new ALDoctor(3,"moksh@gmail.com");
   doctor4: ALDoctor = new ALDoctor(5,"john@gmail.com");
   doctor5: ALDoctor = new ALDoctor(6,"domenic@gmail.com");
@@ -22,7 +22,7 @@ export class DoctorLoginComponent {
   doctor8: ALDoctor = new ALDoctor(10,"keval@gmail.com");
   doctor9: ALDoctor = new ALDoctor(11,"sumit@gmail.com");
   doctor10: ALDoctor = new ALDoctor(4,"hemant@gmail.com");
-  doctor11: ALDoctor = new ALDoctor(9,"anil@gmail.com");
+  doctor11: ALDoctor = new ALDoctor(9,"rahul@gmail.com");
 
   constructor(private router: Router) {
     // Initialize the students array with the two student objects

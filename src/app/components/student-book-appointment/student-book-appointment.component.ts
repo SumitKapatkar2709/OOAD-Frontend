@@ -53,6 +53,8 @@ export class StudentBookAppointmentComponent implements OnInit {
     },
       error => console.log(error));
 
+      console.log(this.doctor);
+
     this.sortAppointments();
     this.filterAvailableAppointments();
   }

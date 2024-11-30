@@ -72,8 +72,8 @@
                       Time: {{ slot.appointmentStartTime | date:'shortTime' }} - {{ slot.appointmentEndTime | date:'shortTime' }}
                     </p>
                      <!-- Debugging Output -->
-          <p>Student: {{ slot.student | json }}</p>
-          <p>Student ID ({{ slot.student?.studentId }}), Current Student ID: {{ studentId }}</p>
+          <!-- <p>Student: {{ slot.student | json }}</p>
+          <p>Student ID ({{ slot.student?.studentId }}), Current Student ID: {{ studentId }}</p> -->
                     <button
                       (click)="onSlotClick(slot.appointmentId)"
                       class="btn btn-primary btn-block"
